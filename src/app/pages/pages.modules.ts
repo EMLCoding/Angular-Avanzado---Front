@@ -7,10 +7,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagesComponent } from './pages.component';
 
 // MODULOS
+import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+
+
+// TODO: ELIMINAR
+import { IncrementadorComponent } from '../componentsReutilizables/incrementador/incrementador.component';
 
 // RUTAS 
 import { PAGES_ROUTES } from './pages.routes';
+
 
 @NgModule( {
     declarations: [
@@ -18,10 +24,12 @@ import { PAGES_ROUTES } from './pages.routes';
         DashboardComponent,
         ProgressComponent,
         Graficas1Component,
+        IncrementadorComponent
     ],
     imports: [
         SharedModule,
-        PAGES_ROUTES
+        PAGES_ROUTES,
+        FormsModule,
     ],
     exports: [
         PagesComponent,
