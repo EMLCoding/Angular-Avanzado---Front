@@ -1,27 +1,19 @@
 # AdminPro
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
+# Rutas
+En este proyecto se ha utilizado un archivo principal de rutas llamado app.routes.ts
+En este archivo se encuentran las rutas "principales" que utilizará la página y estas rutas serán controladas por el <router-outlet> del archivo app.component.html
 
-## Development server
+La idea es modularizar todo lo posible, por ello se crean mas archivos de rutas que van a ir relacionando los componentes, servicios y elementos compartidos.
+Es decir, se crea un archivo de rutas para todos los componentes de "pages" --> pages.routes.ts . En este archivo van a ir todas las rutas (que serán rutas hijas) de todos los componentes que se vayan añadiendo en la carpeta "pages". 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Para poder separar la parte "principal" de la página de la parte "hija" (los componentes) se crea un archivo llamado "pages.component.html" el cual tendra otro <router-outlet>. La diferencia entre este y el de app.component.html es que este, el de pages, va a controlar las rutas hijas de pages.routes.ts
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Modulos
+Al igual que las rutas, los modulos también deben ir segmentados.
+El programa va a tener un archivo de modulos principal llamado app.module.ts y en él deben ir los modulos principales y se van a importar los modulos "hijos" (estos no son hijos como tal como si lo son las rutas)
 
-## Build
+Hay que crear un modulo para pages, otro para los servicios, otro para shared...
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Por ejemplo en el pages.module.ts se va a añadir (en imports) el archivo de rutas de pages, para que luego cuando se importe pages.module.ts en app.module.ts el archivo de rutas de app pueda controlar al archivo de rutas hijas de pages
