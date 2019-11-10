@@ -18,6 +18,11 @@ Hay que crear un modulo para pages, otro para los servicios, otro para shared...
 
 Por ejemplo en el pages.module.ts se va a añadir (en imports) el archivo de rutas de pages, para que luego cuando se importe pages.module.ts en app.module.ts el archivo de rutas de app pueda controlar al archivo de rutas hijas de pages
 
+# Servicios
+Se ha creado un archivo donde se guardan todas las rutas de todos los servicios, y exportandolo podemos usar ese archivo para poder importarlos en cualquier componente de la aplicación, y en caso de modificaciones o nuevos servicios basta con escribirlo en el service.index.ts.
+
+También se crea un modulo para todos los servicios, así luego en el app.module.ts solo hay que añadir el módulo para tener disponibles todos los servicios.
+
 # Atributos Personalizados
 Hay atributos en HTML que no pueden ser vinculados a una variable del TS, la primera solución a esto es crear Atributos Personalizados como se ve en el siguiente código.
 
@@ -59,3 +64,31 @@ Si por ejemplo (en este caso que es un input) se quiere cambiar el valor que tie
 Si se quiere tener el foco en el input con el que se está interactuando sería -> this.variable.nativeElement.focus();
 
 Ver incrementador.component
+
+# Forma alternativa a ViewChild para referenciar un componente HTML desde TS
+Existe otra forma de hacer lo mismo que con ViewChild.
+Lo primero que hay que hacer es, en el constructor del archivo TS escribir lo siguiente:
+    constructor(@Inject(DOCUMENT) private _document) { }
+
+Con esto ya se puede utilizar la varibale _document para referenciar a un componente HTML.
+Por ejemplo nos creamos un metodo que cambie el estilo css en función de un string:
+    cambiarColor( color: string ) {
+        url: string
+        this._document.getElementById('tema').setAttribute('href', url);
+    }
+
+En este ejemplo la única forma de decir que "_document" es un elemento html en concreto es buscándolo por el "id", en este caso "tema". En el componente html que se quiere referenciar habrá que poner este id. IMPORTANTE: EL ID NO DEBE ESTAR REPETIDO EN NINGÚN OTRO COMPONENTE HTML
+    <link id=tema>
+
+De esta forma da igual dónde se encuentre el componente html y donde esté el ts (respecto a la organización de las carpetas), siempre va a poder ser referenciado.
+
+Ver settings.service.ts e index.html
+
+================================================================================================================================
+Añadido: También se puede pasar por parámetro de una función un componente html.
+Para ello en el HTML hay que poner un indicador con "#" (como se hace con ViewChild) y en el evento (click) (o el que sea) al indicar la función se pone como parámetro el indicador -> (click)="funcion(indicador)"
+Ver account-setting.component
+================================================================================================================================
+
+# Cambio dinámico de Tema CSS y persistencia de ajustes
+Ver settings.service.ts y account-setting.component para ver como se ha realizado el cambio de temas Css y la persistencia de la información con el LocalStorage

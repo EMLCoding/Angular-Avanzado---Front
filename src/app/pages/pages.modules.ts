@@ -20,6 +20,7 @@ import { GraficoDonaComponent } from '../componentsReutilizables/grafico-dona/gr
 
 // RUTAS 
 import { PAGES_ROUTES } from './pages.routes';
+import { AccountSettingComponent } from './account-setting/account-setting.component';
 
 
 @NgModule( {
@@ -29,7 +30,8 @@ import { PAGES_ROUTES } from './pages.routes';
         ProgressComponent,
         Graficas1Component,
         IncrementadorComponent,
-        GraficoDonaComponent
+        GraficoDonaComponent,
+        AccountSettingComponent
     ],
     imports: [
         SharedModule,
