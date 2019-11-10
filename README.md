@@ -84,11 +84,11 @@ De esta forma da igual dónde se encuentre el componente html y donde esté el t
 
 Ver settings.service.ts e index.html
 
-================================================================================================================================
+
+
 Añadido: También se puede pasar por parámetro de una función un componente html.
 Para ello en el HTML hay que poner un indicador con "#" (como se hace con ViewChild) y en el evento (click) (o el que sea) al indicar la función se pone como parámetro el indicador -> (click)="funcion(indicador)"
 Ver account-setting.component
-================================================================================================================================
 
 # Cambio dinámico de Tema CSS y persistencia de ajustes
 Ver settings.service.ts y account-setting.component para ver como se ha realizado el cambio de temas Css y la persistencia de la información con el LocalStorage
