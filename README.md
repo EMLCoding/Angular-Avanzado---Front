@@ -86,9 +86,29 @@ Ver settings.service.ts e index.html
 
 
 
-Añadido: También se puede pasar por parámetro de una función un componente html.
+AÑADIDO: También se puede pasar por parámetro de una función un componente html.
 Para ello en el HTML hay que poner un indicador con "#" (como se hace con ViewChild) y en el evento (click) (o el que sea) al indicar la función se pone como parámetro el indicador -> (click)="funcion(indicador)"
 Ver account-setting.component
 
 # Cambio dinámico de Tema CSS y persistencia de ajustes
 Ver settings.service.ts y account-setting.component para ver como se ha realizado el cambio de temas Css y la persistencia de la información con el LocalStorage
+
+# Creacción de Snippets propios
+En Mac: En el menú de visual Code dandole a Code -> Preferences -> User snippets.
+
+Ahora se elige el lenguaje con el que se va a trabajar y te crea un json donde se puede escribir código para que al escribir la palabra clave te lo cambie por todo el código indicado en el json.
+
+# Promesas
+Con las promesas se pueden crear metodos que devuelvan un resolve o un reject en función de unas condiciones especificadas. Luego con este resultado se puede hacer que se realice cierta acción si por ejemplo la promesa ha devuelto un resolve.
+
+Ver promesas.component
+
+# Observables
+Los observables, al igual que el resto de métodos, se ejecuta cuando entramos en el componente en el que está especificado el observable. Sin embargo la particularidad es que si nos movemos a otra página de la aplicación web el observador seguirá ejecutandose de manera asíncrona.
+
+Retry -> Permite volver a ejecutar el observable en caso de que haya devuelto un error. Se puede indicar el número de intentos
+Map -> Permite transformar la información que recibe el Observable para poder mostrarla de la manera en la que queremos. Si por ejemplo el observable recibe un objeto con numerosas variables, con el "map" se puede especificar que variable es la que se va a mostrar.
+Filter -> Permite filtrar la información que devuelve el observable. Por ejemplo si el observable devuelve números y solo se quieren mostrar los impares entonces se utilizaría el filter.
+
+Ver rxjs.component
+También ver breadcrumbs.component para ver cómo se modifica el título de cada página graficas a un observable

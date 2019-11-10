@@ -5,15 +5,20 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
 import { AccountSettingComponent } from './account-setting/account-setting.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 // Aquí van todas las rutas HIJAS de los componentes de "pages"
 const pagesRoutes: Routes = [
     { path: '', component: PagesComponent, children: [
         /* Estas rutas HIJAS van a controlarse con el router-outlet de pages.component.html */
-        { path: 'dashboard', component: DashboardComponent},
-        { path: 'progress', component: ProgressComponent},
-        { path: 'graficas1', component: Graficas1Component},
-        { path: 'account-settings', component: AccountSettingComponent},
+        // El "data" permite establecer un objeto para las rutas que puede contener variables de interés que creemos nosotros
+        { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard'}},
+        { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress'}},
+        { path: 'graficas1', component: Graficas1Component, data: { titulo: 'Gráficas'}},
+        { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas'}},
+        { path: 'observables', component: RxjsComponent, data: { titulo: 'Observables'}},
+        { path: 'account-settings', component: AccountSettingComponent, data: { titulo: 'Ajustes de usuario'}},
         { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
     ]},
 ];

@@ -5,8 +5,7 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { ProgressComponent } from './progress/progress.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagesComponent } from './pages.component';
-
-
+import { PromesasComponent } from './promesas/promesas.component';
 
 // MODULOS
 import { FormsModule } from '@angular/forms';
@@ -21,6 +20,8 @@ import { GraficoDonaComponent } from '../componentsReutilizables/grafico-dona/gr
 // RUTAS 
 import { PAGES_ROUTES } from './pages.routes';
 import { AccountSettingComponent } from './account-setting/account-setting.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
+
 
 
 @NgModule( {
@@ -31,7 +32,9 @@ import { AccountSettingComponent } from './account-setting/account-setting.compo
         Graficas1Component,
         IncrementadorComponent,
         GraficoDonaComponent,
-        AccountSettingComponent
+        AccountSettingComponent,
+        PromesasComponent,
+        RxjsComponent
     ],
     imports: [
         SharedModule,
