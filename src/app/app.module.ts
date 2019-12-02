@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { APP_ROUTES } from './app.routes';
 
 // TODO: ELIMINAR
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // COMPONENTES
 import { PagesModule } from './pages/pages.modules';
@@ -17,6 +17,7 @@ import { RegisterComponent } from './login/register.component';
 
 // SERVICIOS
 import { ServiceModule } from './services/service.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -32,7 +33,9 @@ import { ServiceModule } from './services/service.module';
     BrowserModule,
     APP_ROUTES,
     PagesModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     ServiceModule
