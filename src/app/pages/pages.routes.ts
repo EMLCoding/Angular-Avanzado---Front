@@ -8,9 +8,12 @@ import { AccountSettingComponent } from './account-setting/account-setting.compo
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 
+import { LoginGuardGuard } from '../services/service.index';
+
 // Aquí van todas las rutas HIJAS de los componentes de "pages"
 const pagesRoutes: Routes = [
-    { path: '', component: PagesComponent, children: [
+    // El 'canActivate' sirve para especificar si las rutas se van a ver afectadas por un Guard
+    { path: '', component: PagesComponent, canActivate: [LoginGuardGuard], children: [
         /* Estas rutas HIJAS van a controlarse con el router-outlet de pages.component.html */
         // El "data" permite establecer un objeto para las rutas que puede contener variables de interés que creemos nosotros
         { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard'}},

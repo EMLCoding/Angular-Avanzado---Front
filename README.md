@@ -112,3 +112,25 @@ Filter -> Permite filtrar la información que devuelve el observable. Por ejempl
 
 Ver rxjs.component
 También ver breadcrumbs.component para ver cómo se modifica el título de cada página graficas a un observable
+
+# Login de Google
+Lo primero de todo es cargar la página de Google API, buscar el proyecto y guardar el ID de cliente. Para este proyecto esta información estaría en: https://console.cloud.google.com/apis/credentials/oauthclient/441659999765-udg5kb9u60e96lfg06pa4vnknc5ft8hl.apps.googleusercontent.com?project=canvas-verve-259910&authuser=1
+
+Lo siguiente es abrir el archivo index.html y en el HEAD añadir las siguientes líneas de código:
+<script src="https://apis.google.com/js/platform.js"></script>
+    <meta name="google-signin-client_id" content="441659999765-udg5kb9u60e96lfg06pa4vnknc5ft8hl.apps.googleusercontent.com">
+El numerito de 'content' habría que cambiarlo por el ID de cliente (en este caso para este proyecto estaría bien así)
+
+Lo siguien es en el archivo login.component.ts hay que declarar la variable que se va a utilizar para manejar la librería de Google (importada previamente)
+
+Seguido de esto, en el mismo archivo, se va a crear el método googleInit():
+    Ver código en el propio archivo, el profesor del curso modifica el código oficial de: https://developers.google.com/identity/sign-in/web/listeners
+
+# Guards
+Los Guards se utilizan para evitar que se pueda acceder a ciertas partes de la aplicación si no se cumplen unas condiciones. Por ejemplo que no se pueda acceder a los componentes de la aplicación si no se ha hecho login previamente.
+
+Lo primero que hay que hacer es crear el Guard
+
+En el archivo routing de las rutas que queramos proteger habrá que añadir algo como lo siguiente: canActivate: [LoginGuardGuard] dentro del 'path' padre (ver pages.routes.ts)
+
+Ver servicios -> guards y usuario.service

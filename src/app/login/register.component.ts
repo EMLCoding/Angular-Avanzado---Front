@@ -16,6 +16,8 @@ declare function init_plugins();
 })
 export class RegisterComponent implements OnInit {
 
+  // ESTE COMPONENTE UTILIZA UN FORMULARIO REACTIVO
+  
   forma: FormGroup;
 
   constructor( public usuarioService: UsuarioService, public router: Router) { }
