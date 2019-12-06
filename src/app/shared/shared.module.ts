@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { PipesModule } from '../pipes/pipes.module';
 
 // COMPONENTES
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -10,10 +11,12 @@ import { NopagefoundComponent } from '../pages/nopagefound/nopagefound.component
 
 
 
+
 @NgModule({
     imports: [
         RouterModule,
-        CommonModule
+        CommonModule,
+        PipesModule
     ],
     declarations: [
         HeaderComponent,

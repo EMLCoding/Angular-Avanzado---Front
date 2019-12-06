@@ -6,6 +6,8 @@ import 'rxjs/add/operator/map';
 import Swal from 'sweetalert2';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { SubirArchivoService } from '../subirArchivo/subir-archivo.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,7 @@ export class UsuarioService {
   usuario: Usuario;
   token: string;
 
-  constructor(public http: HttpClient, public router: Router) {
+  constructor(public http: HttpClient, public router: Router, public subirArchivoService: SubirArchivoService) {
     this.cargarStorage();
   }
 
@@ -29,6 +31,58 @@ export class UsuarioService {
       });
       return respuesta.usuario;
     });
+  }
+
+  actualizarUsuario(usuario: Usuario) {
+    let url = URL_SERVICIOS + '/usuario/' + this.usuario['_id'];
+    url += '?token=' + this.token;
+
+    return this.http.put(url, usuario).pipe(map((respuesta: any) => {
+
+      if (usuario['_id'] === this.usuario['_id']) {
+        const usuarioDB: Usuario = respuesta.usuario;
+        this.guardarStorage(usuarioDB.id, this.token, usuarioDB);
+      }
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Usuario Actualizado',
+        text: usuario.nombre
+      });
+      return true;
+    }));
+  }
+
+  borrarUsuario(id: string) {
+    let url = URL_SERVICIOS + '/usuario/' + id;
+    url += '?token=' + this.token;
+
+    return this.http.delete(url);
+  }
+
+  cargarUsuarios( desde: number = 0) {
+    const url = URL_SERVICIOS + '/usuario?desde=' + desde;
+
+    return this.http.get(url);
+  }
+
+  buscarUsuario(valor: string) {
+    const url = URL_SERVICIOS + '/busqueda/coleccion/usuarios/' + valor;
+    return this.http.get(url).pipe(map((respuesta: any) => respuesta.usuarios));
+  }
+
+  cambiarImagen(archivo: File, id: string) {
+    this.subirArchivoService.subirArchivo(archivo, 'usuarios', id).then((respuesta: any) => {
+      this.usuario.img = respuesta.usuario.img;
+      Swal.fire({
+        icon: 'success',
+        title: 'Imagen Actualizado',
+        text: this.usuario.nombre
+      });
+      this.guardarStorage(id, this.token, this.usuario);
+    }).catch(respuesta => {
+      console.log(respuesta);
+    })
   }
 
   estaLogueado() {

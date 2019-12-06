@@ -20,9 +20,6 @@ import { ServiceModule } from './services/service.module';
 import { HttpClientModule } from '@angular/common/http';
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

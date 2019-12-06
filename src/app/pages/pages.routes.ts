@@ -9,6 +9,8 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 
 import { LoginGuardGuard } from '../services/service.index';
+import { ProfileComponent } from './profile/profile.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 // Aquí van todas las rutas HIJAS de los componentes de "pages"
 const pagesRoutes: Routes = [
@@ -22,6 +24,9 @@ const pagesRoutes: Routes = [
         { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas'}},
         { path: 'observables', component: RxjsComponent, data: { titulo: 'Observables'}},
         { path: 'account-settings', component: AccountSettingComponent, data: { titulo: 'Ajustes de usuario'}},
+        { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de usuario'}},
+        // Mantenimientos
+        { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de usuarios'}},
         { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
     ]},
 ];
