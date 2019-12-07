@@ -11,6 +11,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuardGuard } from '../services/service.index';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
 
 // Aquí van todas las rutas HIJAS de los componentes de "pages"
 const pagesRoutes: Routes = [
@@ -27,6 +28,8 @@ const pagesRoutes: Routes = [
         { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de usuario'}},
         // Mantenimientos
         { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de usuarios'}},
+        { path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Mantenimiento de hospitales'}},
+        { path: 'medicos', component: UsuariosComponent, data: { titulo: 'Mantenimiento de usuarios'}},
         { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
     ]},
 ];

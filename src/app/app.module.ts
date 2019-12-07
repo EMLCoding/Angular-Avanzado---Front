@@ -19,12 +19,11 @@ import { RegisterComponent } from './login/register.component';
 import { ServiceModule } from './services/service.module';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

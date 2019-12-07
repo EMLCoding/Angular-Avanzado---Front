@@ -66,7 +66,6 @@ export class UsuariosComponent implements OnInit {
   }
 
   borrarUsuario(usuario: Usuario) {
-    console.log(usuario);
     if (usuario['_id'] === this.usuarioService.usuario['_id']) {
       Swal.fire({
         icon: 'error',
