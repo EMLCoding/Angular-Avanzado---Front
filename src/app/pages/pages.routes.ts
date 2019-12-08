@@ -12,6 +12,9 @@ import { LoginGuardGuard } from '../services/service.index';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
+import { MedicosComponent } from './medicos/medicos.component';
+import { MedicoComponent } from './medicos/medico.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 // Aquí van todas las rutas HIJAS de los componentes de "pages"
 const pagesRoutes: Routes = [
@@ -26,10 +29,12 @@ const pagesRoutes: Routes = [
         { path: 'observables', component: RxjsComponent, data: { titulo: 'Observables'}},
         { path: 'account-settings', component: AccountSettingComponent, data: { titulo: 'Ajustes de usuario'}},
         { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de usuario'}},
+        { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador'}},
         // Mantenimientos
         { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de usuarios'}},
         { path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Mantenimiento de hospitales'}},
-        { path: 'medicos', component: UsuariosComponent, data: { titulo: 'Mantenimiento de usuarios'}},
+        { path: 'medicos', component: MedicosComponent, data: { titulo: 'Mantenimiento de médicos'}},
+        { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Actualizar médico'}},
         { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
     ]},
 ];

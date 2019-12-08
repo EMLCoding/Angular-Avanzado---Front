@@ -10,6 +10,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
+import { MedicosComponent } from './medicos/medicos.component';
+import { MedicoComponent } from './medicos/medico.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
+
 
 // MODULOS
 import { FormsModule } from '@angular/forms';
@@ -29,7 +33,6 @@ import { PAGES_ROUTES } from './pages.routes';
 import { AccountSettingComponent } from './account-setting/account-setting.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 
-
 @NgModule( {
     declarations: [
         PagesComponent,
@@ -44,7 +47,10 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         ProfileComponent,
         UsuariosComponent,
         ModalUploadComponent,
-        HospitalesComponent
+        HospitalesComponent,
+        MedicosComponent,
+        MedicoComponent,
+        BusquedaComponent
     ],
     imports: [
         CommonModule,

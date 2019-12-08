@@ -3,7 +3,7 @@ export class Medico {
     nombre?: string;
     img?: string;
     usuario?: string;
-    hospital?: string;
+    hospitalId?: string;
     _id?: string;
 
     constructor(fields: Partial<Medico> = {}) {

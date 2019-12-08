@@ -33,7 +33,7 @@ export class HospitalService {
 
   obtenerHospital(id: string) {
     const url = URL_SERVICIOS + '/hospital/' + id;
-    return this.http.get(url);
+    return this.http.get(url).map((respuesta: any) => respuesta.hospital);
   }
 
   buscarHospital(nombre: string) {
