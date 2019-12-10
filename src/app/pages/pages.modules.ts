@@ -35,7 +35,6 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule( {
     declarations: [
-        PagesComponent,
         DashboardComponent,
         ProgressComponent,
         Graficas1Component,
@@ -46,7 +45,6 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         RxjsComponent,
         ProfileComponent,
         UsuariosComponent,
-        ModalUploadComponent,
         HospitalesComponent,
         MedicosComponent,
         MedicoComponent,
@@ -61,7 +59,6 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         PipesModule
     ],
     exports: [
-        PagesComponent,
         DashboardComponent,
         ProgressComponent,
         Graficas1Component,

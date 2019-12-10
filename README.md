@@ -134,3 +134,13 @@ Lo primero que hay que hacer es crear el Guard
 En el archivo routing de las rutas que queramos proteger habrá que añadir algo como lo siguiente: canActivate: [LoginGuardGuard] dentro del 'path' padre (ver pages.routes.ts)
 
 Ver servicios -> guards y usuario.service
+
+# Lazy Load
+Ver app.routes.ts, app.module.ts, pages.routes.ts y pages.modules.ts
+
+# Generar versión de producción
+Ejecutar el siguiente comando en la terminal de Visual Studio del proyecto Front: ng build --prod
+
+Luego hay que abrir una nueva terminal y viajar a la carpeta 'dist' del proyecto (esta se genera al utilizar el comando anterior) y ejecutar el comando 'http-server -o' (para que este funcione antes hay que instalar el http-server: npm install http-server -g)
+
+En el archivo 'index.html' de la carpeta 'dist/AdminPro' se ha tenido que comentar la línea '<base href="/">' para que no de problemas con las rutas relativas de la aplicación

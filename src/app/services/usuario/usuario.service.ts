@@ -4,9 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
 import 'rxjs/add/operator/map';
 import Swal from 'sweetalert2';
-import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subirArchivo/subir-archivo.service';
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import { Observable } from 'rxjs/internal/Observable';
 
 
 @Injectable({
@@ -22,6 +25,27 @@ export class UsuarioService {
     this.cargarStorage();
   }
 
+  renuevaToken() {
+    let url = URL_SERVICIOS + '/login/renuevatoken';
+    url += '?token=' + this.token;
+
+    return this.http.get(url).map((respuesta: any) => {
+      this.token = respuesta.token;
+      localStorage.setItem('token', this.token);
+
+      return true;
+    }).catch(err => {
+      // Si no se pudo renovar el token...
+      this.router.navigate(['/login']);
+      Swal.fire({
+        icon: 'error',
+        title: 'No se pudo renovar el token',
+        text: ''
+      });
+      return Observable.throw(err);
+    })
+  }
+
   crearUsuario(usuario: Usuario) {
     const url = URL_SERVICIOS + '/usuario';
     return this.http.post(url, usuario).map( (respuesta: any) => {
@@ -31,6 +55,13 @@ export class UsuarioService {
         text: usuario.email
       });
       return respuesta.usuario;
+    }).catch(err => {
+      Swal.fire({
+        icon: 'error',
+        title: err.error.mensaje,
+        text: err.error.errors.message
+      });
+      return Observable.throw(err);
     });
   }
 
@@ -38,7 +69,7 @@ export class UsuarioService {
     let url = URL_SERVICIOS + '/usuario/' + this.usuario['_id'];
     url += '?token=' + this.token;
 
-    return this.http.put(url, usuario).pipe(map((respuesta: any) => {
+    return this.http.put(url, usuario).map((respuesta: any) => {
 
       if (usuario['_id'] === this.usuario['_id']) {
         const usuarioDB: Usuario = respuesta.usuario;
@@ -51,7 +82,7 @@ export class UsuarioService {
         text: usuario.nombre
       });
       return true;
-    }));
+    });
   }
 
   borrarUsuario(id: string) {
@@ -69,7 +100,7 @@ export class UsuarioService {
 
   buscarUsuario(valor: string) {
     const url = URL_SERVICIOS + '/busqueda/coleccion/usuarios/' + valor;
-    return this.http.get(url).pipe(map((respuesta: any) => respuesta.usuarios));
+    return this.http.get(url).map((respuesta: any) => respuesta.usuarios);
   }
 
   cambiarImagen(archivo: File, id: string) {
@@ -128,19 +159,26 @@ export class UsuarioService {
       localStorage.removeItem('email');
     }
     const url = URL_SERVICIOS + '/login';
-    return this.http.post(url, usuario).pipe(map((respuesta: any) => {
+    return this.http.post(url, usuario).map((respuesta: any) => {
       this.guardarStorage(respuesta.id, respuesta.token, respuesta.usuario, respuesta.menu);
       return true;
-    }));
+    }).catch(err => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error en el login',
+        text: err.error.mensaje
+      });
+      return Observable.throw(err);
+    });
   }
 
   loginGoogle(token: string) {
     const url = URL_SERVICIOS + '/login/google';
 
-    return this.http.post(url, {token}).pipe(map((respuesta: any) => {
+    return this.http.post(url, {token}).map((respuesta: any) => {
       this.guardarStorage(respuesta.id, respuesta.token, respuesta.usuario, respuesta.menu);
       return true;
-    }));
+    });
   }
 
   logout() {
